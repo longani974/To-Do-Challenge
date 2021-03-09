@@ -15,8 +15,12 @@ const TodoContextProvider = (props) => {
         setTodoDatas([todo, ...todoDatas]);
     };
 
+    const deleteTodo = (todoId) => {
+        setTodoDatas([...todoDatas].filter((data) => data.id !== todoId));
+    };
+
     return (
-        <TodoContext.Provider value={{ todoDatas, addTodo }}>
+        <TodoContext.Provider value={{ todoDatas, addTodo, deleteTodo }}>
             {props.children}
         </TodoContext.Provider>
     );
