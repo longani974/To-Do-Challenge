@@ -1,0 +1,17 @@
+.todoList {
+    margin: 16px 0;
+}
+
+.todoList > div:first-child {
+    border-top-left-radius: var(--itemBorderRadrius);
+    border-top-right-radius: var(--itemBorderRadrius);
+}
+
+.todoList > div:last-child {
+    border-bottom-left-radius: var(--itemBorderRadrius);
+    border-bottom-right-radius: var(--itemBorderRadrius);
+}
+
+.todoList > div:not(:last-child) {
+    border-bottom: 1px solid var(--bottomItemBorder);
+}

@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+import TodoContextProvider from './contexts/TodoContext';
 import './App.css';
 import AddTask from './components/addTask/AddTask';
 import Header from './components/Header/Header';
+import TodoList from './components/todoList/TodoList';
 
 function App() {
     const darkMode = 'dark';
@@ -20,8 +22,11 @@ function App() {
 
     return (
         <div className="App">
-            <Header lightOrDarkMode={lightOrDarkModeHandler} />
-            <AddTask />
+            <TodoContextProvider>
+                <Header lightOrDarkMode={lightOrDarkModeHandler} />
+                <AddTask />
+                <TodoList />
+            </TodoContextProvider>
         </div>
     );
 }

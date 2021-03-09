@@ -6,7 +6,7 @@
     border-radius: var(--itemBorderRadrius);
     background-color: var(--ItemsBackground);
     overflow: hidden;
-    padding-left: 12px;
+    padding-left: 20px;
 }
 
 .addTask .inputText {
@@ -16,6 +16,23 @@
     outline: none;
     margin-left: 20px;
     background: none;
+    color: var(--text);
+    font-family: Josefin Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: -0.166667px;
+}
+
+.addTask .inputText::placeholder {
+    color: var(--text);
+    font-family: Josefin Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: -0.166667px;
 }
 
 .wrapper {

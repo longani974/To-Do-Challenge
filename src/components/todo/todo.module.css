@@ -1,0 +1,28 @@
+.todo {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: var(--itemHeight);
+    background-color: var(--ItemsBackground);
+    overflow: hidden;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.todo p {
+    margin-left: 20px;
+    color: var(--todoText);
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: -0.166667px;
+}
+
+.cross {
+    width: 12px;
+    aspect-ratio: 1/1;
+    margin-left: auto;
+    background-image: url('../../assets/images/icon-cross.svg');
+    background-position: center;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+}
