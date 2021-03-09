@@ -1,3 +1,8 @@
+:root {
+    --itemHeight: 48px;
+    --itemBorderRadrius: 5px;
+}
+
 .light {
     --BG: red;
     --ItemsBackground: hsl(0, 0%, 98%);
@@ -10,6 +15,7 @@
     --cross: hsl(235, 19%, 35%);
     --background: hsl(0, 0%, 98%);
     --bgImage: url('./assets/images/bg-mobile-light.jpg');
+    --toggleBtn: url('./assets/images/icon-moon.svg');
 }
 
 .dark {
@@ -24,6 +30,7 @@
     --cross: hsl(235, 19%, 35%);
     --background: hsl(235, 21%, 11%);
     --bgImage: url('./assets/images/bg-mobile-dark.jpg');
+    --toggleBtn: url('./assets/images/icon-sun.svg');
 }
 
 body {
@@ -34,5 +41,16 @@ body {
 }
 
 .App {
-    max-height: 327px;
+    padding: 48px 24px 0px;
+    width: 100vw;
+}
+
+@media screen and (min-width: 376px) {
+    .light {
+        --bgImage: url('./assets/images/bg-desktop-light.jpg');
+    }
+
+    .dark {
+        --bgImage: url('./assets/images/bg-desktop-dark.jpg');
+    }
 }

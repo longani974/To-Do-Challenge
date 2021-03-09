@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import Button from './components/Button/Button';
+import AddTask from './components/addTask/AddTask';
+import Header from './components/Header/Header';
 
 function App() {
     const darkMode = 'dark';
@@ -19,7 +20,8 @@ function App() {
 
     return (
         <div className="App">
-            <Button lightOrDarkMode={lightOrDarkModeHandler} />
+            <Header lightOrDarkMode={lightOrDarkModeHandler} />
+            <AddTask />
         </div>
     );
 }

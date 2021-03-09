@@ -1,0 +1,13 @@
+.btnToggle {
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    background-image: var(--toggleBtn);
+    background-size: 20px 20px;
+    border: none;
+    outline: none;
+}
+
+.btnToggle:hover {
+    cursor: pointer;
+}

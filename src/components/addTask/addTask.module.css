@@ -1,0 +1,23 @@
+.addTask {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: var(--itemHeight);
+    border-radius: var(--itemBorderRadrius);
+    background-color: var(--ItemsBackground);
+    overflow: hidden;
+    padding-left: 12px;
+}
+
+.addTask .inputText {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    margin-left: 20px;
+    background: none;
+}
+
+.wrapper {
+    display: flex;
+}
