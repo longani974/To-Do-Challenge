@@ -17,7 +17,11 @@ function App() {
     }, [lightOrDark]);
 
     useEffect(() => {
-        setlightOrDark(localStorage.getItem('lightOrDarkMode'));
+        if (localStorage.getItem('lightOrDarkMode')) {
+            setlightOrDark(localStorage.getItem('lightOrDarkMode'));
+        } else {
+            setlightOrDark('light');
+        }
     }, []);
 
     const lightOrDarkModeHandler = () => {
