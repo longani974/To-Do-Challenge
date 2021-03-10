@@ -1,0 +1,16 @@
+.todoFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: var(--itemHeight);
+    background-color: var(--ItemsBackground);
+    padding-left: 20px;
+    padding-right: 20px;
+
+    color: var(--text);
+    font-size: 12px;
+    line-height: 12px;
+    text-align: right;
+    letter-spacing: -0.166667px;
+}

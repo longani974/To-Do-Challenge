@@ -28,7 +28,7 @@ const AddTask = () => {
         e.stopPropagation();
         if (!isChecked) return;
 
-        const todo = { id: Math.random(), todo: task };
+        const todo = { id: Math.random(), todo: task, completed: false };
         addTodo(todo);
 
         setTask('');

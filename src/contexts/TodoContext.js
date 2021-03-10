@@ -7,16 +7,36 @@ const TodoContextProvider = (props) => {
 
     useEffect(() => {
         const localStorageTodo = JSON.parse(localStorage.getItem('todoList'));
-        console.log(localStorageTodo.length);
-        if (localStorageTodo.length > 0) {
+
+        if (localStorageTodo && localStorageTodo.length > 0) {
             setTodoDatas(localStorageTodo);
         } else {
             setTodoDatas([
-                { id: 'fds', todo: '1Jog around the park 5x' },
-                { id: 'fdqs', todo: '2Jog around the park 5x' },
-                { id: 'fcds', todo: '3Jog around the park 5x' },
-                { id: 'fdbs', todo: '4Jog around the park 5x' },
-                { id: 'fdns', todo: '5Jog around the park 5x' },
+                {
+                    id: 'fds',
+                    todo: '1Jog around the park 5x',
+                    completed: false,
+                },
+                {
+                    id: 'fdqs',
+                    todo: '2Jog around the park 5x',
+                    completed: false,
+                },
+                {
+                    id: 'fcds',
+                    todo: '3Jog around the park 5x',
+                    completed: false,
+                },
+                {
+                    id: 'fdbs',
+                    todo: '4Jog around the park 5x',
+                    completed: false,
+                },
+                {
+                    id: 'fdns',
+                    todo: '5Jog around the park 5x',
+                    completed: false,
+                },
             ]);
         }
     }, []);
@@ -24,19 +44,31 @@ const TodoContextProvider = (props) => {
     const addTodo = (todo) => {
         const newDataList = [todo, ...todoDatas];
         setTodoDatas(newDataList);
+
         localStorage.setItem('todoList', JSON.stringify(newDataList));
-        // console.log(JSON.parse(localStorage.getItem('todoList')));
     };
 
     const deleteTodo = (todoId) => {
         const newDataList = [...todoDatas].filter((data) => data.id !== todoId);
         setTodoDatas(newDataList);
+
         localStorage.setItem('todoList', JSON.stringify(newDataList));
-        // console.log(JSON.parse(localStorage.getItem('todoList')));
+    };
+
+    const toggleCompleted = (todoId) => {
+        const newDataList = [...todoDatas];
+        const index = newDataList.findIndex((data) => data.id === todoId);
+        newDataList[index].completed = !newDataList[index].completed;
+
+        setTodoDatas(newDataList);
+
+        localStorage.setItem('todoList', JSON.stringify(newDataList));
     };
 
     return (
-        <TodoContext.Provider value={{ todoDatas, addTodo, deleteTodo }}>
+        <TodoContext.Provider
+            value={{ todoDatas, addTodo, deleteTodo, toggleCompleted }}
+        >
             {props.children}
         </TodoContext.Provider>
     );
