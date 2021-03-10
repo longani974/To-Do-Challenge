@@ -125,6 +125,7 @@ const TodoContextProvider = (props) => {
             value={{
                 datasToDisplay,
                 todoDatas,
+                keyDataToDisplay,
                 addTodo,
                 deleteTodo,
                 toggleCompleted,
