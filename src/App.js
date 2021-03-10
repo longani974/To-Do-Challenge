@@ -21,12 +21,15 @@ function App() {
 
     const lightOrDarkModeHandler = () => {
         if (lightOrDark === lightMode) {
-            setlightOrDark(darkMode);
-            localStorage.setItem('lightOrDarkMode', darkMode);
+            changeDarkOrLightMode(darkMode);
         } else {
-            setlightOrDark(lightMode);
-            localStorage.setItem('lightOrDarkMode', lightMode);
+            changeDarkOrLightMode(lightMode);
         }
+    };
+
+    const changeDarkOrLightMode = (mode) => {
+        setlightOrDark(mode);
+        localStorage.setItem('lightOrDarkMode', mode);
     };
 
     return (
