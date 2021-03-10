@@ -43,16 +43,14 @@ const TodoContextProvider = (props) => {
 
     const addTodo = (todo) => {
         const newDataList = [todo, ...todoDatas];
-        setTodoDatas(newDataList);
 
-        localStorage.setItem('todoList', JSON.stringify(newDataList));
+        newTodoDatasHandler(newDataList);
     };
 
     const deleteTodo = (todoId) => {
         const newDataList = [...todoDatas].filter((data) => data.id !== todoId);
-        setTodoDatas(newDataList);
 
-        localStorage.setItem('todoList', JSON.stringify(newDataList));
+        newTodoDatasHandler(newDataList);
     };
 
     const toggleCompleted = (todoId) => {
@@ -60,17 +58,19 @@ const TodoContextProvider = (props) => {
         const index = newDataList.findIndex((data) => data.id === todoId);
         newDataList[index].completed = !newDataList[index].completed;
 
-        setTodoDatas(newDataList);
-
-        localStorage.setItem('todoList', JSON.stringify(newDataList));
+        newTodoDatasHandler(newDataList);
     };
 
     const deleteAllCompletedToDo = () => {
         const newDataList = [...todoDatas].filter((data) => !data.completed);
 
-        setTodoDatas(newDataList);
+        newTodoDatasHandler(newDataList);
+    };
 
-        localStorage.setItem('todoList', JSON.stringify(newDataList));
+    const newTodoDatasHandler = (todoList) => {
+        setTodoDatas(todoList);
+
+        localStorage.setItem('todoList', JSON.stringify(todoList));
     };
 
     return (
