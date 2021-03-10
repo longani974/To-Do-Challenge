@@ -9,16 +9,24 @@ import SortToDoList from './components/sortTodoList/SortToDoList';
 function App() {
     const darkMode = 'dark';
     const lightMode = 'light';
-    const [lightOrDark, setlightOrDark] = useState(lightMode);
+    const [lightOrDark, setlightOrDark] = useState('');
 
     useEffect(() => {
         document.querySelector('body').className = lightOrDark;
     }, [lightOrDark]);
 
+    useEffect(() => {
+        setlightOrDark(localStorage.getItem('lightOrDarkMode'));
+    }, []);
+
     const lightOrDarkModeHandler = () => {
-        lightOrDark === lightMode
-            ? setlightOrDark(darkMode)
-            : setlightOrDark(lightMode);
+        if (lightOrDark === lightMode) {
+            setlightOrDark(darkMode);
+            localStorage.setItem('lightOrDarkMode', darkMode);
+        } else {
+            setlightOrDark(lightMode);
+            localStorage.setItem('lightOrDarkMode', lightMode);
+        }
     };
 
     return (
