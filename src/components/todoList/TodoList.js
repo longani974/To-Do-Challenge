@@ -5,11 +5,11 @@ import TodoFooter from '../todoFooter/TodoFooter';
 import * as styles from './todoList.module.css';
 
 const TodoList = () => {
-    const { todoDatas } = useContext(TodoContext);
+    const { datasToDisplay } = useContext(TodoContext);
 
     return (
         <div className={styles.todoList}>
-            {todoDatas.map((todoData) => (
+            {datasToDisplay.map((todoData) => (
                 <Todo id={todoData.id} key={todoData.id} todo={todoData.todo} />
             ))}
             <TodoFooter />

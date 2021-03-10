@@ -32,7 +32,9 @@ const Todo = (props) => {
             </p>
             <div
                 className={styles.cross}
-                onClick={() => deleteTodo(props.id)}
+                onClick={() => {
+                    deleteTodo(props.id);
+                }}
             ></div>
         </div>
     );

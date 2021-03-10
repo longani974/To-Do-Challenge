@@ -1,12 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { TodoContext } from '../../contexts/TodoContext';
 import * as styles from './todoFooter.module.css';
 
 const TodoFooter = () => {
+    const [nbOfItems, setNbOfItems] = useState(0);
+    const [itemOrItems, setItemorItems] = useState('item');
+
     const { todoDatas, deleteAllCompletedToDo } = useContext(TodoContext);
 
-    const nbOfItems = todoDatas.length;
-    const itemOrItems = nbOfItems.length <= 1 ? 'item' : 'items';
+    useEffect(() => {
+        setNbOfItems(todoDatas.length);
+    }, [todoDatas.length]);
+
+    useEffect(() => {
+        setItemorItems(nbOfItems <= 1 ? 'item' : 'items');
+    }, [nbOfItems]);
 
     return (
         <div className={styles.todoFooter}>

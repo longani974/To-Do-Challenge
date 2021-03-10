@@ -4,6 +4,7 @@ import './App.css';
 import AddTask from './components/addTask/AddTask';
 import Header from './components/Header/Header';
 import TodoList from './components/todoList/TodoList';
+import SortToDoList from './components/sortTodoList/SortToDoList';
 
 function App() {
     const darkMode = 'dark';
@@ -26,6 +27,7 @@ function App() {
                 <Header lightOrDarkMode={lightOrDarkModeHandler} />
                 <AddTask />
                 <TodoList />
+                <SortToDoList />
             </TodoContextProvider>
         </div>
     );
