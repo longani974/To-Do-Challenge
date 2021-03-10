@@ -14,3 +14,7 @@
     text-align: right;
     letter-spacing: -0.166667px;
 }
+
+.clearCompleted:hover {
+    cursor: pointer;
+}

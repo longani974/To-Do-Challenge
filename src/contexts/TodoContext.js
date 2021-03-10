@@ -65,9 +65,23 @@ const TodoContextProvider = (props) => {
         localStorage.setItem('todoList', JSON.stringify(newDataList));
     };
 
+    const deleteAllCompletedToDo = () => {
+        const newDataList = [...todoDatas].filter((data) => !data.completed);
+
+        setTodoDatas(newDataList);
+
+        localStorage.setItem('todoList', JSON.stringify(newDataList));
+    };
+
     return (
         <TodoContext.Provider
-            value={{ todoDatas, addTodo, deleteTodo, toggleCompleted }}
+            value={{
+                todoDatas,
+                addTodo,
+                deleteTodo,
+                toggleCompleted,
+                deleteAllCompletedToDo,
+            }}
         >
             {props.children}
         </TodoContext.Provider>

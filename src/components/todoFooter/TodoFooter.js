@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { TodoContext } from '../../contexts/TodoContext';
 import * as styles from './todoFooter.module.css';
 
 const TodoFooter = () => {
+    const { todoDatas, deleteAllCompletedToDo } = useContext(TodoContext);
+
+    const nbOfItems = todoDatas.length;
+    const itemOrItems = nbOfItems.length <= 1 ? 'item' : 'items';
+
     return (
         <div className={styles.todoFooter}>
-            <p>5 items left</p>
-            <p>Clear Completed</p>
+            <p>
+                {nbOfItems} {itemOrItems} left
+            </p>
+            <p
+                onClick={deleteAllCompletedToDo}
+                className={styles.clearCompleted}
+            >
+                Clear Completed
+            </p>
         </div>
     );
 };
