@@ -27,7 +27,8 @@ const Todo = (props) => {
 
     /* drag and drop */
 
-    const itemDragStart = (event) => {
+    const itemDragStart = (event, bool) => {
+        props.mobileOrDesktop(bool);
         setDragging('dragging');
         props.defineDragItem(event.target);
         // this.classList.add('dragging');
@@ -42,23 +43,24 @@ const Todo = (props) => {
     }
 
     function itemDragOver(event) {
-        event.preventDefault();
-        props.swapeItems(event);
-        setDisablePointer('disablePointer');
+        props.findItemsId(event);
+        // setDisablePointer('disablePointer');
         // swapeItems(event);
     }
 
     function itemDragLeave(event) {
-        event.preventDefault();
         setDisablePointer('');
     }
 
     return (
         <div
             draggable="true"
-            onDragStart={itemDragStart}
+            onDragStart={(e) => itemDragStart(e, false)}
+            onTouchStart={(e) => itemDragStart(e, true)}
             onDragEnd={itemDragEnd}
+            onTouchEnd={itemDragEnd}
             onDragOver={itemDragOver}
+            onTouchMove={itemDragOver}
             onDragLeave={itemDragLeave}
             className={`${styles.todo} ${styles[dragging]} ${styles[disablePointer]} item`}
             data-dragid={props.id}
