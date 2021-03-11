@@ -43,6 +43,7 @@ const Todo = (props) => {
     }
 
     function itemDragOver(event) {
+        event.preventDefault();
         props.findItemsId(event);
         // setDisablePointer('disablePointer');
         // swapeItems(event);
