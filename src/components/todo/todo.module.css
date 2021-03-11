@@ -33,3 +33,13 @@
     background-repeat: no-repeat;
     cursor: pointer;
 }
+
+/* drag and drop */
+
+.dragging {
+    opacity: 0.5;
+}
+
+.disablePointer > * {
+    pointer-events: none;
+}

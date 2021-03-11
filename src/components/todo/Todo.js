@@ -7,6 +7,9 @@ const Todo = (props) => {
     const [isChecked, setIsChecked] = useState(false);
     const [classCompleted, setClassCompleted] = useState(false);
     const { todoDatas, deleteTodo, toggleCompleted } = useContext(TodoContext);
+    const [disablePointer, setDisablePointer] = useState('');
+
+    const [dragging, setDragging] = useState('');
 
     useEffect(() => {
         const dataList = [...todoDatas];
@@ -22,8 +25,44 @@ const Todo = (props) => {
         toggleCompleted(props.id);
     };
 
+    /* drag and drop */
+
+    const itemDragStart = (event) => {
+        setDragging('dragging');
+        props.defineDragItem(event.target);
+        // this.classList.add('dragging');
+        // dragItem = this;
+    };
+
+    function itemDragEnd() {
+        setDragging('');
+        props.defineDragItem(null);
+        // this.classList.remove('dragging');
+        // dragItem = null;
+    }
+
+    function itemDragOver(event) {
+        event.preventDefault();
+        props.swapeItems(event);
+        setDisablePointer('disablePointer');
+        // swapeItems(event);
+    }
+
+    function itemDragLeave(event) {
+        event.preventDefault();
+        setDisablePointer('');
+    }
+
     return (
-        <div className={styles.todo}>
+        <div
+            draggable="true"
+            onDragStart={itemDragStart}
+            onDragEnd={itemDragEnd}
+            onDragOver={itemDragOver}
+            onDragLeave={itemDragLeave}
+            className={`${styles.todo} ${styles[dragging]} ${styles[disablePointer]} item`}
+            data-dragid={props.id}
+        >
             <div style={{ display: 'flex' }} onMouseUp={clickHandler}>
                 <CheckBox id={props.id} isChecked={isChecked} />
             </div>

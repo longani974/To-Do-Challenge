@@ -64,6 +64,12 @@ const TodoContextProvider = (props) => {
         newTodoDatasHandler(newDataList);
     };
 
+    const reorderTodo = (todoList) => {
+        const newDataList = todoList;
+
+        newTodoDatasHandler(newDataList);
+    };
+
     const toggleCompleted = (todoId) => {
         const newDataList = [...todoDatas];
         const index = newDataList.findIndex((data) => data.id === todoId);
@@ -134,6 +140,7 @@ const TodoContextProvider = (props) => {
                 displayActiveTodos,
                 displayCompletedTodos,
                 changeTodosToDisplay,
+                reorderTodo,
             }}
         >
             {props.children}
