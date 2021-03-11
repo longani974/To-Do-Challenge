@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { TodoContext } from '../../contexts/TodoContext';
 import CheckBox from '../checkBox/checkBox';
 import * as styles from './todo.module.css';
@@ -10,6 +10,22 @@ const Todo = (props) => {
     const [disablePointer, setDisablePointer] = useState('');
 
     const [dragging, setDragging] = useState('');
+
+    const drag = useRef();
+
+    useEffect(() => {
+        const dragRef = drag.current;
+        dragRef.addEventListener('touchstart', (e) => itemDragStart(e, true), {
+            passive: false,
+        });
+        return () => {
+            dragRef.removeEventListener(
+                'touchstart',
+                (e) => itemDragStart(e, true),
+                { passive: false }
+            );
+        };
+    }, []);
 
     useEffect(() => {
         const dataList = [...todoDatas];
@@ -44,7 +60,7 @@ const Todo = (props) => {
     }
 
     function itemDragOver(event) {
-        event.preventDefault();
+        // event.preventDefault();
         props.findItemsId(event);
         // setDisablePointer('disablePointer');
         // swapeItems(event);
@@ -56,9 +72,10 @@ const Todo = (props) => {
 
     return (
         <div
+            ref={drag}
             draggable="true"
             onDragStart={(e) => itemDragStart(e, false)}
-            onTouchStart={(e) => itemDragStart(e, true)}
+            // onTouchStart={(e) => itemDragStart(e, true)}
             onDragEnd={itemDragEnd}
             onTouchEnd={itemDragEnd}
             onDragOver={itemDragOver}
