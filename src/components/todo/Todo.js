@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { TodoContext } from '../../contexts/TodoContext';
 import CheckBox from '../checkBox/checkBox';
 import * as styles from './todo.module.css';
@@ -12,8 +12,6 @@ const Todo = (props) => {
     const [disablePointer, setDisablePointer] = useState('');
 
     const [dragging, setDragging] = useState('');
-
-    const drag = useRef();
 
     useEffect(() => {
         const dataList = [...todoDatas];
@@ -36,13 +34,14 @@ const Todo = (props) => {
         props.mobileOrDesktop(bool);
         setDragging('dragging');
         props.defineDragItem(event.target);
-        disableBodyScroll(drag.current);
         // this.classList.add('dragging');
         // dragItem = this;
+        disableBodyScroll(document.querySelector('html'));
     };
 
     function itemDragEnd() {
-        enableBodyScroll(drag.current);
+        enableBodyScroll(document.querySelector('html'));
+
         setDragging('');
         props.defineDragItem(null);
         // this.classList.remove('dragging');
@@ -51,7 +50,6 @@ const Todo = (props) => {
 
     function itemDragOver(event) {
         // event.preventDefault();
-        disableBodyScroll(drag.current);
         props.findItemsId(event);
         // setDisablePointer('disablePointer');
         // swapeItems(event);
@@ -63,7 +61,6 @@ const Todo = (props) => {
 
     return (
         <div
-            ref={drag}
             draggable="true"
             onDragStart={(e) => itemDragStart(e, false)}
             onTouchStart={(e) => itemDragStart(e, true)}
