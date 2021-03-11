@@ -28,6 +28,7 @@ const Todo = (props) => {
     /* drag and drop */
 
     const itemDragStart = (event, bool) => {
+        event.preventDefault();
         props.mobileOrDesktop(bool);
         setDragging('dragging');
         props.defineDragItem(event.target);
