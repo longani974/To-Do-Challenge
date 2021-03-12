@@ -45,12 +45,31 @@ body {
     width: 100vw;
 }
 
-@media screen and (min-width: 376px) {
+@media screen and (min-width: 415px) {
+    :root {
+        --itemHeight: 64px;
+        --itemBorderRadrius: 5px;
+    }
+
+    body {
+        background-position: center top;
+    }
     .light {
         --bgImage: url('./assets/images/bg-desktop-light.jpg');
     }
 
     .dark {
         --bgImage: url('./assets/images/bg-desktop-dark.jpg');
+    }
+
+    .wrapperApp {
+        max-width: 540px;
+        margin: auto;
+    }
+}
+
+@media screen and (min-width: 515px) {
+    .sortToDoList {
+        display: none;
     }
 }

@@ -40,11 +40,15 @@ function App() {
     return (
         <div className="App">
             <TodoContextProvider>
-                <Header lightOrDarkMode={lightOrDarkModeHandler} />
-                <AddTask />
-                <TodoList />
-                <SortToDoList />
-                <Footer />
+                <div className="wrapperApp">
+                    <Header lightOrDarkMode={lightOrDarkModeHandler} />
+                    <AddTask />
+                    <TodoList />
+                    <div className="sortToDoList">
+                        <SortToDoList />
+                    </div>
+                    <Footer />
+                </div>
             </TodoContextProvider>
         </div>
     );

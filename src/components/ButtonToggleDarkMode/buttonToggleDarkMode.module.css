@@ -11,3 +11,11 @@
 .btnToggle:hover {
     cursor: pointer;
 }
+
+@media screen and (min-width: 415px) {
+    .btnToggle {
+        width: 26px;
+        height: 26px;
+        background-size: 24px 24px;
+    }
+}

@@ -6,3 +6,9 @@
     color: var(--text);
     margin: 40px 0 72px;
 }
+
+@media screen and (min-width: 415px) {
+    .footer {
+        margin: 49px 0 52px;
+    }
+}

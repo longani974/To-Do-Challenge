@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { TodoContext } from '../../contexts/TodoContext';
 import * as styles from './todoFooter.module.css';
+import SortToDoList from '../sortTodoList/SortToDoList';
 
 const TodoFooter = () => {
     const [nbOfItems, setNbOfItems] = useState(0);
@@ -21,6 +22,9 @@ const TodoFooter = () => {
             <p>
                 {nbOfItems} {itemOrItems} left
             </p>
+            <div className={styles.sortToDoList}>
+                <SortToDoList />
+            </div>
             <p
                 onClick={deleteAllCompletedToDo}
                 className={styles.clearCompleted}

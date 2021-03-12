@@ -16,7 +16,7 @@
     outline: none;
     margin-left: 20px;
     background: none;
-    color: var(--text);
+    color: var(--todoText);
     font-family: Josefin Sans;
     font-style: normal;
     font-weight: normal;
@@ -37,4 +37,23 @@
 
 .wrapper {
     display: flex;
+}
+
+@media screen and (min-width: 415px) {
+    .addTask {
+        padding-left: 24px;
+    }
+
+    .addTask .inputText {
+        margin-left: 24px;
+        font-size: 18px;
+        line-height: 18px;
+        letter-spacing: -0.25px;
+    }
+
+    .addTask .inputText::placeholder {
+        font-size: 18px;
+        line-height: 18px;
+        letter-spacing: -0.25px;
+    }
 }
