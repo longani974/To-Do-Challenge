@@ -7,11 +7,11 @@ const TodoFooter = () => {
     const [nbOfItems, setNbOfItems] = useState(0);
     const [itemOrItems, setItemorItems] = useState('item');
 
-    const { todoDatas, deleteAllCompletedToDo } = useContext(TodoContext);
+    const { datasToDisplay, deleteAllCompletedToDo } = useContext(TodoContext);
 
     useEffect(() => {
-        setNbOfItems(todoDatas.length);
-    }, [todoDatas.length]);
+        setNbOfItems(datasToDisplay.length);
+    }, [datasToDisplay.length]);
 
     useEffect(() => {
         setItemorItems(nbOfItems <= 1 ? 'item' : 'items');
